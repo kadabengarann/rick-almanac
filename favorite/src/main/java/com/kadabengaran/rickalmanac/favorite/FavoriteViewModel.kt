@@ -5,5 +5,5 @@ import androidx.lifecycle.asLiveData
 import com.kadabengaran.rickalmanac.core.domain.usecase.CharacterUseCase
 
 class FavoriteViewModel(characterUseCase: CharacterUseCase): ViewModel() {
-    val character = characterUseCase.getFavoriteCharacter().asLiveData()
+    val favoriteCharacter = characterUseCase.getFavoriteCharacter().asLiveData()
 }
