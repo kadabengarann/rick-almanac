@@ -3,7 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/College/Bang/Learn/MADE/Sub/Sub_1/RickAlmanac/app/src/main/res/drawable/ic_favorite.xml" value="0.124" />
+        <entry key="..\:/College/Bang/Learn/MADE/Sub/Sub_1/RickAlmanac/app/src/main/res/layout/activity_detail_character.xml" value="0.11302083333333333" />
         <entry key="..\:/College/Bang/Learn/MADE/Sub/Sub_1/RickAlmanac/app/src/main/res/layout/activity_main.xml" value="0.11302083333333333" />
+        <entry key="..\:/College/Bang/Learn/MADE/Sub/Sub_1/RickAlmanac/app/src/main/res/layout/content_detail_character.xml" value="0.11197916666666667" />
+        <entry key="..\:/College/Bang/Learn/MADE/Sub/Sub_1/RickAlmanac/app/src/main/res/layout/fragment_home.xml" value="0.11302083333333333" />
+        <entry key="..\:/College/Bang/Learn/MADE/Sub/Sub_1/RickAlmanac/app/src/main/res/layout/fragment_search.xml" value="0.264" />
+        <entry key="..\:/College/Bang/Learn/MADE/Sub/Sub_1/RickAlmanac/app/src/main/res/layout/view_error.xml" value="0.253125" />
+        <entry key="..\:/College/Bang/Learn/MADE/Sub/Sub_1/RickAlmanac/app/src/main/res/menu/bottom_nav_menu.xml" value="0.11302083333333333" />
+        <entry key="..\:/College/Bang/Learn/MADE/Sub/Sub_1/RickAlmanac/app/src/main/res/menu/search_menu.xml" value="0.11302083333333333" />
+        <entry key="..\:/College/Bang/Learn/MADE/Sub/Sub_1/RickAlmanac/core/src/main/res/layout/item_list_character.xml" value="0.11197916666666667" />
       </map>
     </option>
   </component>
