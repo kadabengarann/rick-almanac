@@ -77,7 +77,6 @@ class CharacterRepository @Inject constructor(
                 }
                 is ApiResponse.Empty -> Resource.Success(emptyList())
                 is ApiResponse.Error -> Resource.Error(it.errorMessage)
-                else -> Resource.Error("Unknown error")
             }
         }
     }

@@ -16,14 +16,13 @@ buildscript {
     ext.activity_ktx_version = '1.5.1'
     ext.fragment_ktx_version = '1.5.2'
 
-
     ext.cardview_version = "1.0.0"
     ext.recyclerview_version = "1.1.0"
     ext.material_version = "1.6.1"
     ext.glide_version = "4.11.0"
 
     ext.retrofit_version = "2.9.0"
-    ext.logging_interceptor_version = '5.0.0-alpha.2'
+    ext.logging_interceptor_version = '5.0.0-alpha.3'
 
     ext.kotlin_coroutines_version = '1.6.4'
 
@@ -31,9 +30,11 @@ buildscript {
 
     //Dagger Hilt
     ext.dagger_version = "2.30.1"
-
     ext.hilt_version = '2.43.2'
-    ext.hilt_jetpack_version = '1.0.0-alpha03'
+    ext.hilt_jetpack_version = '1.0.0'
+
+    //
+    ext.navigation_dynamic_fragment_version = "2.6.0-alpha01"
 
     repositories {
         google()
