@@ -75,6 +75,7 @@ class CharacterRepository @Inject constructor(
                     val characterList = DataMapper.mapResponsesToEntities(data)
                     Resource.Success(DataMapper.mapEntitiesToDomain(characterList))
                 }
+                is ApiResponse.Empty -> Resource.Success(emptyList())
                 is ApiResponse.Error -> Resource.Error(it.errorMessage)
                 else -> Resource.Error("Unknown error")
             }

@@ -16,5 +16,6 @@
     <string name="retry_string">Retry</string>
 
     <string name="no_search_result">No character found for this query</string>
-    <string name="no_search_data">No search data</string>
+    <string name="no_search_data">Enter character name to search</string>
+    <string name="nothing_here">There is nothing here</string>
 </resources>

@@ -8,6 +8,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import retrofit2.HttpException
+import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -43,11 +45,19 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
         return flow {
             try {
                 val response = apiService.getSearchList(query)
-                val dataArray = response.results
-                if (dataArray.isNotEmpty()) emit(ApiResponse.Success(response.results)) else emit(ApiResponse.Empty)
+                if (response.results.isNotEmpty()) emit(ApiResponse.Success(response.results)) else emit(ApiResponse.Empty)
             } catch (e : Exception){
-                emit(ApiResponse.Error(e.toString()))
-                Log.e("RemoteDataSource", e.toString())
+                when (e) {
+                    is IOException -> emit(ApiResponse.Error("No internet connection"))
+                    is HttpException -> {
+                        if (e.code() == 404) emit(ApiResponse.Error(e.code().toString()))
+                        else emit(ApiResponse.Error("Something went wrong"))
+                    }
+                    else -> {
+                        e.localizedMessage?.toString()
+                        emit(ApiResponse.Error(e.localizedMessage))
+                    }
+                }
             }
         }.flowOn(Dispatchers.IO)
     }

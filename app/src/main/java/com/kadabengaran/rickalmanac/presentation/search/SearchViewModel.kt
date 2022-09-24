@@ -10,14 +10,18 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(private val characterUseCase: CharacterUseCase) : ViewModel() {
-    private val _listSearchResult = MutableLiveData<Resource<List<Character>>>()
-    val listSearchResult: LiveData<Resource<List<Character>>> = _listSearchResult
+    private val _listSearchResult = MutableLiveData<Resource<List<Character>>?>()
+    val listSearchResult: LiveData<Resource<List<Character>>?> = _listSearchResult
 
     private val _queryValue = MutableLiveData<String>()
     val queryValue: LiveData<String> = _queryValue
 
     fun setQuery(query: String) {
         _queryValue.value = query
+    }
+
+    fun clearSearch() {
+        _listSearchResult.postValue(null)
     }
 
     fun searchUser(query: String) {

@@ -1,12 +1,12 @@
 package com.kadabengaran.rickalmanac.favorite
 
 import android.content.Context
-import com.kadabengaran.rickalmanac.di.MapsModuleDependencies
+import com.kadabengaran.rickalmanac.di.FavoriteModuleDependencies
 import com.kadabengaran.rickalmanac.favorite.presentation.FavoriteFragment
 import dagger.BindsInstance
 import dagger.Component
 
-@Component(dependencies = [MapsModuleDependencies::class])
+@Component(dependencies = [FavoriteModuleDependencies::class])
 interface FavoriteComponent {
 
     fun inject(fragment: FavoriteFragment)
@@ -14,7 +14,7 @@ interface FavoriteComponent {
     @Component.Builder
     interface Builder {
         fun context(@BindsInstance context: Context): Builder
-        fun appDependencies(mapsModuleDependencies: MapsModuleDependencies): Builder
+        fun appDependencies(mapsModuleDependencies: FavoriteModuleDependencies): Builder
         fun build(): FavoriteComponent
     }
 }

@@ -5,10 +5,7 @@ import com.google.gson.annotations.SerializedName
 class ListCharacterResponse (
 
     @field:SerializedName("error")
-    val error: Boolean,
-
-    @field:SerializedName("message")
-    val message: String,
+    val error: String,
 
     @field:SerializedName("results")
     val results: List<CharacterResponse>

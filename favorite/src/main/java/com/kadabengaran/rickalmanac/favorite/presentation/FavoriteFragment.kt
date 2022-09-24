@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kadabengaran.rickalmanac.core.ui.CharacterAdapter
 import com.kadabengaran.rickalmanac.presentation.detail.DetailCharacterActivity
-import com.kadabengaran.rickalmanac.di.MapsModuleDependencies
+import com.kadabengaran.rickalmanac.di.FavoriteModuleDependencies
 import com.kadabengaran.rickalmanac.favorite.DaggerFavoriteComponent
 import com.kadabengaran.rickalmanac.favorite.ViewModelFactory
 import com.kadabengaran.rickalmanac.favorite.databinding.FragmentFavoriteBinding
@@ -45,7 +45,7 @@ class FavoriteFragment : Fragment() {
             .appDependencies(
                 EntryPointAccessors.fromApplication(
                     context.applicationContext,
-                    MapsModuleDependencies::class.java
+                    FavoriteModuleDependencies::class.java
                 )
             )
             .build()
@@ -64,7 +64,12 @@ class FavoriteFragment : Fragment() {
                 startActivity(intent)
             }
 
-            favoriteViewModel.favoriteCharacter.observe(viewLifecycleOwner, characterAdapter::setData)
+            favoriteViewModel.favoriteCharacter.observe(viewLifecycleOwner) {
+                if (it != null) {
+                    characterAdapter.setData(it)
+                    binding?.grNoCharacter?.visibility = if (it.isNotEmpty()) View.GONE else View.VISIBLE
+                }
+            }
 
             with(binding?.rvCharacter) {
                 this?.layoutManager = GridLayoutManager(context, 2)

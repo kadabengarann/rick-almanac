@@ -7,6 +7,43 @@
     android:background="?attr/backColor"
     tools:context=".presentation.FavoriteFragment">
 
+    <ImageView
+        android:id="@+id/img_no_character"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_user_slash"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.248"
+        app:tint="?attr/textColorSecondary" />
+
+    <TextView
+        android:id="@+id/tv_no_character"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/nothing_here"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_no_character"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/gr_no_character"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="tv_no_character,img_no_character"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_character"
         android:layout_width="match_parent"

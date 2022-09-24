@@ -2,6 +2,7 @@ package com.kadabengaran.rickalmanac.presentation.search
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -69,6 +70,18 @@ class SearchFragment : Fragment() {
                 return false
             }
         })
+
+        searchView.addOnAttachStateChangeListener(object : View.OnAttachStateChangeListener {
+            override fun onViewDetachedFromWindow(p0: View) {
+                if (searchViewModel.queryValue.value.isNullOrEmpty()) {
+                    hideAll()
+                    searchViewModel.clearSearch()
+                    binding?.grNoQuery?.visibility = View.VISIBLE
+                }
+            }
+
+            override fun onViewAttachedToWindow(p0: View) {}
+        })
     }
 
     private fun setupView() {
@@ -79,6 +92,7 @@ class SearchFragment : Fragment() {
         }
 
         val tempQuery = searchViewModel.queryValue.value
+        binding?.rvCharacterSearch?.visibility = View.GONE
         binding?.btnError?.setOnClickListener {
             if (tempQuery != null) searchViewModel.searchUser(tempQuery)
             showLoading(true)
@@ -102,7 +116,15 @@ class SearchFragment : Fragment() {
                     }
                     is Resource.Error -> {
                         hideAll()
-                        binding?.grError?.visibility = View.VISIBLE
+                        binding?.apply {
+                            if (character.message == "404")
+                                grNoSearchResult.visibility = View.VISIBLE
+                            else {
+                                grError.visibility = View.VISIBLE
+                                tvError.text = character.message ?: getString(R.string.something_wrong)
+                            }
+                        }
+
                     }
                 }
             }
