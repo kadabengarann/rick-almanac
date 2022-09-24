@@ -12,7 +12,7 @@ import com.kadabengaran.rickalmanac.core.domain.model.Character
 class CharacterAdapter: RecyclerView.Adapter<CharacterAdapter.ListViewHolder>() {
 
     private var listData = ArrayList<Character>()
-    var onItemClick: ((Character) -> Unit)? = null
+    var onItemClick: ((Int) -> Unit)? = null
 
     fun setData(newListData: List<Character>?) {
         if (newListData == null) return
@@ -41,13 +41,12 @@ class CharacterAdapter: RecyclerView.Adapter<CharacterAdapter.ListViewHolder>() 
                     .load(data.image)
                     .into(ivItemImage)
                 tvItemTitle.text = data.name
+                tvItemSubtitle.text = data.species
                 }
         }
 
         init {
-            binding.root.setOnClickListener {
-                onItemClick?.invoke(listData[adapterPosition])
-            }
+            binding.root.setOnClickListener { onItemClick?.invoke(listData[adapterPosition].characterId) }
         }
     }
 

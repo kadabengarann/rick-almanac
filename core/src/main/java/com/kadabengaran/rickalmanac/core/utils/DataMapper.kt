@@ -11,7 +11,12 @@ object DataMapper {
             val character = CharacterEntity(
                 characterId = it.id,
                 name = it.name,
+                status = it.status,
+                gender = it.gender,
+                species = it.species,
                 image = it.image,
+                location = it.location.name,
+                origin = it.origin.name,
                 isFavorite = false
             )
             characterList.add(character)
@@ -24,7 +29,12 @@ object DataMapper {
             Character(
                 characterId = it.characterId,
                 name = it.name,
+                status = it.status,
+                gender = it.gender,
+                species = it.species,
                 image = it.image,
+                location = it.location,
+                origin = it.origin,
                 isFavorite = it.isFavorite
             )
         }
@@ -32,7 +42,38 @@ object DataMapper {
     fun mapDomainToEntity(input: Character) = CharacterEntity(
         characterId = input.characterId,
         name = input.name,
+        status = input.status,
+        gender = input.gender,
+        species = input.species,
         image = input.image,
+        location = input.location,
+        origin = input.origin,
         isFavorite = input.isFavorite
     )
+
+    fun mapResponseToEntity(input: CharacterResponse)=  CharacterEntity(
+        characterId = input.id,
+        name = input.name,
+        status = input.status,
+        gender = input.gender,
+        species = input.species,
+        image = input.image,
+        location = input.location.name,
+        origin = input.origin.name,
+        isFavorite = false
+    )
+
+    fun mapEntityToDomain(input: CharacterEntity) = Character(
+        characterId = input.characterId,
+        name = input.name,
+        status = input.status,
+        gender = input.gender,
+        species = input.species,
+        image = input.image,
+        location = input.location,
+        origin = input.origin,
+        isFavorite = input.isFavorite
+    )
+
+
 }

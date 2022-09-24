@@ -3,10 +3,18 @@
     <string name="title_home">Home</string>
     <string name="title_search">Search</string>
     <string name="title_favorite">Favorite</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove o change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="something_wrong">Oops.. something went wrong</string>
     <string name="error_string">Error</string>
-    <string name="no_search_result">Mo character found for this query</string>
+    <string name="lorem">Lorem Ipsum</string>
+    <string name="status">Status</string>
+    <string name="species">Species</string>
+    <string name="gender">Gender</string>
+    <string name="location">Location</string>
+    <string name="origin">Origin</string>
+    <string name="retry_string">Retry</string>
+
+    <string name="no_search_result">No character found for this query</string>
     <string name="no_search_data">No search data</string>
 </resources>

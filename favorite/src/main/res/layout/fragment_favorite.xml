@@ -4,12 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FavoriteFragment">
+    android:background="?attr/backColor"
+    tools:context=".presentation.FavoriteFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_character"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:spanCount="2"
         tools:listitem="@layout/item_list_character" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

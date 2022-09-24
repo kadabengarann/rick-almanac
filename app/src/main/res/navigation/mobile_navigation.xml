@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.kadabengaran.rickalmanac.home.HomeFragment"
+        android:name="com.kadabengaran.rickalmanac.presentation.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home">
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.kadabengaran.rickalmanac.search.SearchFragment"
+        android:name="com.kadabengaran.rickalmanac.presentation.search.SearchFragment"
         android:label="@string/title_search"
         tools:layout="@layout/fragment_search">
         <action
@@ -28,7 +28,7 @@
     <fragment
         app:moduleName="rickalmanac.favorite"
         android:id="@+id/navigation_favorite"
-        android:name="com.kadabengaran.rickalmanac.favorite.FavoriteFragment"
+        android:name="com.kadabengaran.rickalmanac.favorite.presentation.FavoriteFragment"
         android:label="@string/title_favorite"
         tools:layout="@layout/fragment_favorite" />
 </navigation>

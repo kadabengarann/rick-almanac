@@ -7,6 +7,11 @@ import kotlinx.parcelize.Parcelize
 data class Character(
     val characterId: Int,
     val name: String,
+    val status: String,
+    val gender: String,
+    val species: String,
     val image: String,
+    val origin: String,
+    val location: String,
     val isFavorite: Boolean
 ): Parcelable

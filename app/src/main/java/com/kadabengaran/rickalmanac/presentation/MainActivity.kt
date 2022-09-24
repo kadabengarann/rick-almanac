@@ -1,4 +1,4 @@
-package com.kadabengaran.rickalmanac
+package com.kadabengaran.rickalmanac.presentation
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.kadabengaran.rickalmanac.R
 import com.kadabengaran.rickalmanac.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 

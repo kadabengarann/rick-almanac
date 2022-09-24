@@ -15,10 +15,11 @@
         android:theme="@style/Theme.RickAlmanac"
         tools:targetApi="31">
         <activity
-            android:name=".detail.DetailCharacterActivity"
-            android:exported="false" />
+            android:name=".presentation.detail.DetailCharacterActivity"
+            android:exported="false"
+            android:theme="@style/Theme.RickAlmanac.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.MainActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>

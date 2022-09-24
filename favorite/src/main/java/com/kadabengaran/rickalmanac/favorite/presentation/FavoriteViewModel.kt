@@ -1,4 +1,4 @@
-package com.kadabengaran.rickalmanac.favorite
+package com.kadabengaran.rickalmanac.favorite.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

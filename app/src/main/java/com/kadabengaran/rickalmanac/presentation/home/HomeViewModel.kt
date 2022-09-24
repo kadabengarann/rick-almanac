@@ -1,4 +1,4 @@
-package com.kadabengaran.rickalmanac.home
+package com.kadabengaran.rickalmanac.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

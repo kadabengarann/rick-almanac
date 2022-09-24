@@ -12,6 +12,8 @@ interface ICharacterRepository  {
 
     fun setFavoriteCharacter(character: Character, state: Boolean)
 
+    fun getDetailCharacter(id: Int): Flow<Resource<Character>>
+
     suspend fun searchCharacter(query: String): Flow<Resource<List<Character>>>
 
 }

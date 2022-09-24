@@ -1,4 +1,4 @@
-package com.kadabengaran.rickalmanac.search
+package com.kadabengaran.rickalmanac.presentation.search
 
 import androidx.lifecycle.*
 import com.kadabengaran.rickalmanac.core.data.Resource
@@ -22,9 +22,7 @@ class SearchViewModel @Inject constructor(private val characterUseCase: Characte
 
     fun searchUser(query: String) {
         viewModelScope.launch {
-            characterUseCase.searchCharacter(query).collect {
-                _listSearchResult.postValue(it)
-            }
+            characterUseCase.searchCharacter(query).collect(_listSearchResult::postValue)
         }
     }
 }

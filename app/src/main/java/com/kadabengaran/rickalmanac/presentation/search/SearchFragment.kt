@@ -1,18 +1,17 @@
-package com.kadabengaran.rickalmanac.search
+package com.kadabengaran.rickalmanac.presentation.search
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.kadabengaran.rickalmanac.R
 import com.kadabengaran.rickalmanac.core.data.Resource
+import com.kadabengaran.rickalmanac.core.domain.model.Character
 import com.kadabengaran.rickalmanac.core.ui.CharacterAdapter
 import com.kadabengaran.rickalmanac.databinding.FragmentSearchBinding
-import com.kadabengaran.rickalmanac.detail.DetailCharacterActivity
-import com.kadabengaran.rickalmanac.home.HomeViewModel
+import com.kadabengaran.rickalmanac.presentation.detail.DetailCharacterActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,6 +22,7 @@ class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding
 
+    private val characterAdapter = CharacterAdapter()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,38 +38,8 @@ class SearchFragment : Fragment() {
         if (activity != null) {
             setHasOptionsMenu(true)
 
-            val characterAdapter = CharacterAdapter()
-            characterAdapter.onItemClick = { selectedData ->
-                val intent = Intent(activity, DetailCharacterActivity::class.java)
-                intent.putExtra(DetailCharacterActivity.EXTRA_DATA, selectedData)
-                startActivity(intent)
-            }
-
-            observeData(characterAdapter)
-
-            binding?.rvUsersTabList?.apply {
-                layoutManager = LinearLayoutManager(context)
-                setHasFixedSize(true)
-                adapter = characterAdapter
-            }
-        }
-    }
-
-    private fun observeData(characterAdapter: CharacterAdapter) {
-        searchViewModel.listSearchResult.observe(viewLifecycleOwner) { character ->
-            if (character != null) {
-                when (character) {
-                    is Resource.Loading -> showLoading(true)
-                    is Resource.Success -> {
-                        characterAdapter.setData(character.data)
-                        showLoading(false)
-                    }
-                    is Resource.Error -> {
-                        Toast.makeText(context, "error", Toast.LENGTH_SHORT).show()
-                        showLoading(false)
-                    }
-                }
-            }
+            observeData()
+            setupView()
         }
     }
 
@@ -80,25 +50,77 @@ class SearchFragment : Fragment() {
         val searchItem = menu.findItem(R.id.search_bar)
         val searchView = searchItem.actionView as androidx.appcompat.widget.SearchView
 
+        val tempQuery = searchViewModel.queryValue.value
+        if (tempQuery != null && tempQuery.isNotEmpty()) searchView.setQuery(tempQuery, false)
+        else binding?.grNoQuery?.visibility = View.VISIBLE
+
         searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null) {
                     hideAll()
-                    binding?.rvUsersTabList?.visibility = View.VISIBLE
+                    showLoading(true)
                     searchViewModel.searchUser(query)
                 }
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) searchViewModel.setQuery(newText)
                 return false
             }
         })
     }
 
+    private fun setupView() {
+        characterAdapter.onItemClick = { selectedData ->
+            val intent = Intent(activity, DetailCharacterActivity::class.java)
+            intent.putExtra(DetailCharacterActivity.EXTRA_DATA, selectedData)
+            startActivity(intent)
+        }
+
+        val tempQuery = searchViewModel.queryValue.value
+        binding?.btnError?.setOnClickListener {
+            if (tempQuery != null) searchViewModel.searchUser(tempQuery)
+            showLoading(true)
+            binding?.grError?.visibility = View.GONE
+        }
+
+        binding?.rvCharacterSearch?.apply {
+            layoutManager = GridLayoutManager(context, 2)
+            setHasFixedSize(true)
+            adapter = characterAdapter
+        }
+    }
+
+    private fun observeData() {
+        searchViewModel.listSearchResult.observe(viewLifecycleOwner) { character ->
+            if (character != null) {
+                when (character) {
+                    is Resource.Loading -> showLoading(true)
+                    is Resource.Success -> {
+                        character.data?.let { setSearchData(it) }
+                    }
+                    is Resource.Error -> {
+                        hideAll()
+                        binding?.grError?.visibility = View.VISIBLE
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setSearchData(characterList: List<Character>) {
+        hideAll()
+        if (characterList.isEmpty()) binding?.grNoSearchResult?.visibility = View.VISIBLE
+        else {
+            characterAdapter.setData(characterList)
+            binding?.rvCharacterSearch?.visibility = View.VISIBLE
+        }
+    }
+
     private fun hideAll() {
         binding?.apply {
-            rvUsersTabList.visibility = View.GONE
+            rvCharacterSearch.visibility = View.GONE
             progressBar.visibility = View.GONE
             grNoSearchResult.visibility = View.GONE
             grNoQuery.visibility = View.GONE
@@ -109,6 +131,7 @@ class SearchFragment : Fragment() {
     private fun showLoading(isLoading: Boolean) {
         binding?.progressBar?.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

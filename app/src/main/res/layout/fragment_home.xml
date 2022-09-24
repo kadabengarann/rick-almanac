@@ -4,12 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.HomeFragment">
+    android:background="?attr/backColor"
+    tools:context=".presentation.home.HomeFragment">
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_tourism"
+        android:id="@+id/rv_characters"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_list_tourism" />
+        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:spanCount="2"
+        tools:listitem="@layout/item_list_character"
+        />
 
     <ProgressBar
         android:id="@+id/progress_bar"

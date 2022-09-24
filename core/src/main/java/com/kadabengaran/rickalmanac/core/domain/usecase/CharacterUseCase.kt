@@ -8,5 +8,6 @@ interface CharacterUseCase {
     fun getAllCharacter(): Flow<Resource<List<Character>>>
     fun getFavoriteCharacter(): Flow<List<Character>>
     fun setFavoriteCharacter(character: Character, state: Boolean)
+    fun getDetailCharacter(id: Int): Flow<Resource<Character>>
     suspend fun searchCharacter(query: String): Flow<Resource<List<Character>>>
 }

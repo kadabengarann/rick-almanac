@@ -2,6 +2,7 @@ package com.kadabengaran.rickalmanac.favorite
 
 import android.content.Context
 import com.kadabengaran.rickalmanac.di.MapsModuleDependencies
+import com.kadabengaran.rickalmanac.favorite.presentation.FavoriteFragment
 import dagger.BindsInstance
 import dagger.Component
 

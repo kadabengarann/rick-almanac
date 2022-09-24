@@ -14,6 +14,22 @@ data class CharacterEntity (
 
     @ColumnInfo(name = "name")
     var name: String,
+
+    @ColumnInfo(name = "status")
+    var status: String,
+
+    @ColumnInfo(name = "gender")
+    var gender: String,
+
+    @ColumnInfo(name = "species")
+    var species: String,
+
+    @ColumnInfo(name = "location")
+    var location: String,
+
+    @ColumnInfo(name = "origin")
+    var origin: String,
+
     @ColumnInfo(name = "image")
     var image: String,
 

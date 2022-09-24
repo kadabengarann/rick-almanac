@@ -13,7 +13,11 @@ class LocalDataSource @Inject constructor(private val characterDao: CharacterDao
 
     fun getFavoriteCharacter(): Flow<List<CharacterEntity>> = characterDao.getFavoriteCharacter()
 
+    fun getDetailCharacter(id: Int): Flow<CharacterEntity> = characterDao.getDetailCharacter(id)
+
     suspend fun insertCharacter(characterList: List<CharacterEntity>) = characterDao.insertCharacter(characterList)
+
+    suspend fun addCharacter(characterList: CharacterEntity) = characterDao.addCharacter(characterList)
 
     fun setFavoriteCharacter(character: CharacterEntity, newState: Boolean) {
         character.isFavorite = newState
