@@ -23,5 +23,5 @@ class DatabaseModule {
     ).fallbackToDestructiveMigration().build()
 
     @Provides
-    fun provideTourismDao(database: CharacterDatabase): CharacterDao = database.characterDao()
+    fun provideCharacterDao(database: CharacterDatabase): CharacterDao = database.characterDao()
 }
