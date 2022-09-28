@@ -16,6 +16,13 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField("String", "HOST_NAME", '"rickandmortyapi.com"')
+        buildConfigField("String", "BASE_URL", '"https://rickandmortyapi.com/api/"')
+        buildConfigField("String", "KEY_1", '"sha256/XtaFwFFXtkn1vCS46OKi+rvpbQqM7uvK29Eu5X0asH0="')
+        buildConfigField("String", "KEY_2", '"sha256/jQJTbIh0grw0/1TkHSumWb+Fs0Ggogr621gT3PvPKG0="')
+        buildConfigField("String", "KEY_3", '"sha256/C5+lpZ7tcVwmwQIMcRtPbsQtWLABXhQzejna0wHFr8M="')
+
     }
 
     buildTypes {
