@@ -3,19 +3,18 @@ package com.kadabengaran.rickalmanac.favorite.presentation
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kadabengaran.rickalmanac.core.ui.CharacterAdapter
-import com.kadabengaran.rickalmanac.presentation.detail.DetailCharacterActivity
 import com.kadabengaran.rickalmanac.di.FavoriteModuleDependencies
 import com.kadabengaran.rickalmanac.favorite.DaggerFavoriteComponent
 import com.kadabengaran.rickalmanac.favorite.ViewModelFactory
 import com.kadabengaran.rickalmanac.favorite.databinding.FragmentFavoriteBinding
-
+import com.kadabengaran.rickalmanac.presentation.detail.DetailCharacterActivity
 import dagger.hilt.android.EntryPointAccessors
 import javax.inject.Inject
 
@@ -66,7 +65,7 @@ class FavoriteFragment : Fragment() {
 
             favoriteViewModel.favoriteCharacter.observe(viewLifecycleOwner) {
                 if (it != null) {
-                    characterAdapter.setData(it)
+                    characterAdapter.listData = it
                     binding?.grNoCharacter?.visibility = if (it.isNotEmpty()) View.GONE else View.VISIBLE
                 }
             }
@@ -81,7 +80,7 @@ class FavoriteFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        binding?.rvCharacter?.adapter = null;
+        binding?.rvCharacter?.adapter = null
         _binding = null
     }
 }

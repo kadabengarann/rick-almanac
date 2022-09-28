@@ -64,7 +64,7 @@ class HomeFragment : Fragment() {
                     is Resource.Loading -> binding?.progressBar?.visibility = View.VISIBLE
                     is Resource.Success -> {
                         binding?.progressBar?.visibility = View.GONE
-                        characterAdapter.setData(character.data)
+                        characterAdapter.listData = character.data
                     }
                     is Resource.Error -> {
                         binding?.progressBar?.visibility = View.GONE
@@ -79,7 +79,7 @@ class HomeFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        binding?.rvCharacters?.adapter = null;
+        binding?.rvCharacters?.adapter = null
         _binding = null
     }
 }

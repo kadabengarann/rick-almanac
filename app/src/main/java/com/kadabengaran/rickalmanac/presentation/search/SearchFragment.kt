@@ -2,7 +2,6 @@ package com.kadabengaran.rickalmanac.presentation.search
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -15,6 +14,7 @@ import com.kadabengaran.rickalmanac.databinding.FragmentSearchBinding
 import com.kadabengaran.rickalmanac.presentation.detail.DetailCharacterActivity
 import dagger.hilt.android.AndroidEntryPoint
 
+@Suppress("DEPRECATION")
 @AndroidEntryPoint
 class SearchFragment : Fragment() {
 
@@ -44,6 +44,7 @@ class SearchFragment : Fragment() {
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.search_menu, menu)
@@ -59,7 +60,7 @@ class SearchFragment : Fragment() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null) {
                     hideAll()
-                    showLoading(true)
+                    showLoading()
                     searchViewModel.searchUser(query)
                 }
                 return true
@@ -95,7 +96,7 @@ class SearchFragment : Fragment() {
         binding?.rvCharacterSearch?.visibility = View.GONE
         binding?.btnError?.setOnClickListener {
             if (tempQuery != null) searchViewModel.searchUser(tempQuery)
-            showLoading(true)
+            showLoading()
             binding?.grError?.visibility = View.GONE
         }
 
@@ -110,7 +111,7 @@ class SearchFragment : Fragment() {
         searchViewModel.listSearchResult.observe(viewLifecycleOwner) { character ->
             if (character != null) {
                 when (character) {
-                    is Resource.Loading -> showLoading(true)
+                    is Resource.Loading -> showLoading()
                     is Resource.Success -> {
                         character.data?.let { setSearchData(it) }
                     }
@@ -135,7 +136,7 @@ class SearchFragment : Fragment() {
         hideAll()
         if (characterList.isEmpty()) binding?.grNoSearchResult?.visibility = View.VISIBLE
         else {
-            characterAdapter.setData(characterList)
+            characterAdapter.listData = characterList
             binding?.rvCharacterSearch?.visibility = View.VISIBLE
         }
     }
@@ -150,13 +151,11 @@ class SearchFragment : Fragment() {
         }
     }
 
-    private fun showLoading(isLoading: Boolean) {
-        binding?.progressBar?.visibility = if (isLoading) View.VISIBLE else View.GONE
-    }
+    private fun showLoading() { binding?.progressBar?.visibility = View.VISIBLE }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        binding?.rvCharacterSearch?.adapter = null;
+        binding?.rvCharacterSearch?.adapter = null
         _binding = null
     }
 }
