@@ -18,4 +18,7 @@
     <string name="no_search_result">No character found for this query</string>
     <string name="no_search_data">Enter character name to search</string>
     <string name="nothing_here">There is nothing here</string>
+
+    <string name="img_no_query_content_description">No Query Image</string>
+    <string name="img_no_result_content_description">No Result Image</string>
 </resources>
