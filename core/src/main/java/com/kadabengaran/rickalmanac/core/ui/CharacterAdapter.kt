@@ -11,7 +11,7 @@ import com.kadabengaran.rickalmanac.core.domain.model.Character
 
 class CharacterAdapter: RecyclerView.Adapter<CharacterAdapter.ListViewHolder>() {
 
-    private var listData = ArrayList<Character>()
+    private val listData = ArrayList<Character>()
     var onItemClick: ((Int) -> Unit)? = null
 
     fun setData(newListData: List<Character>?) {
