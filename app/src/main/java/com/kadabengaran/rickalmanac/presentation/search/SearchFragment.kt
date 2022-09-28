@@ -156,6 +156,7 @@ class SearchFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        binding?.rvCharacterSearch?.adapter = null;
         _binding = null
     }
 }

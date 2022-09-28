@@ -77,4 +77,9 @@ class HomeFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding?.rvCharacters?.adapter = null;
+        _binding = null
+    }
 }

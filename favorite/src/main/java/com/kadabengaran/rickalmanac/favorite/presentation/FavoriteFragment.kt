@@ -78,4 +78,10 @@ class FavoriteFragment : Fragment() {
             }
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding?.rvCharacter?.adapter = null;
+        _binding = null
+    }
 }

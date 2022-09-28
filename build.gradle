@@ -36,6 +36,9 @@ buildscript {
     //
     ext.navigation_dynamic_fragment_version = "2.6.0-alpha01"
 
+    //leakcanary
+    ext.leakcanary_android_version = "2.9.1"
+
     repositories {
         google()
         mavenCentral()
