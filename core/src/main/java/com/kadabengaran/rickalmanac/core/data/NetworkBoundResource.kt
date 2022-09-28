@@ -1,7 +1,9 @@
 package com.kadabengaran.rickalmanac.core.data
 
 import com.kadabengaran.rickalmanac.core.data.source.remote.network.ApiResponse
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flow
 
 abstract class NetworkBoundResource<ResultType, RequestType> {
 

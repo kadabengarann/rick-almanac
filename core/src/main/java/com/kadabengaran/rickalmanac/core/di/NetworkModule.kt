@@ -1,5 +1,6 @@
 package com.kadabengaran.rickalmanac.core.di
 
+import com.kadabengaran.rickalmanac.core.BuildConfig
 import com.kadabengaran.rickalmanac.core.data.source.remote.network.ApiService
 import dagger.Module
 import dagger.Provides
@@ -11,7 +12,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
-import com.kadabengaran.rickalmanac.core.BuildConfig
 
 @Module
 @InstallIn(SingletonComponent::class)

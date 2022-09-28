@@ -1,6 +1,9 @@
 package com.kadabengaran.rickalmanac.presentation.detail
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.kadabengaran.rickalmanac.core.data.Resource
 import com.kadabengaran.rickalmanac.core.domain.model.Character
 import com.kadabengaran.rickalmanac.core.domain.usecase.CharacterUseCase
