@@ -2,7 +2,7 @@ package com.kadabengaran.rickalmanac.core.data.source.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-class ListCharacterResponse (
+class ListCharacterResponse(
 
     @field:SerializedName("error")
     val error: String,

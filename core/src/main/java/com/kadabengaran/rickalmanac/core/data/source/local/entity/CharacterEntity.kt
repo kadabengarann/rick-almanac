@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "character")
-data class CharacterEntity (
+data class CharacterEntity(
     @PrimaryKey
     @ColumnInfo(name = "characterId")
     var characterId: Int,

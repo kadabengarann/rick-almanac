@@ -11,9 +11,9 @@ import com.kadabengaran.rickalmanac.core.R
 import com.kadabengaran.rickalmanac.core.databinding.ItemListCharacterBinding
 import com.kadabengaran.rickalmanac.core.domain.model.Character
 
-class CharacterAdapter: RecyclerView.Adapter<CharacterAdapter.ListViewHolder>() {
+class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.ListViewHolder>() {
 
-    var listData : List<Character>?
+    var listData: List<Character>?
         get() = recyclerListDiffer.currentList
         set(value) = recyclerListDiffer.submitList(value)
 
@@ -42,7 +42,7 @@ class CharacterAdapter: RecyclerView.Adapter<CharacterAdapter.ListViewHolder>() 
                     .into(ivItemImage)
                 tvItemTitle.text = data.name
                 tvItemSubtitle.text = data.species
-                }
+            }
         }
 
         init {
@@ -50,7 +50,7 @@ class CharacterAdapter: RecyclerView.Adapter<CharacterAdapter.ListViewHolder>() 
         }
     }
 
-    private val differCallback = object : DiffUtil.ItemCallback<Character>(){
+    private val differCallback = object : DiffUtil.ItemCallback<Character>() {
         override fun areItemsTheSame(oldItem: Character, newItem: Character): Boolean {
             return oldItem.characterId == newItem.characterId
         }
@@ -58,7 +58,6 @@ class CharacterAdapter: RecyclerView.Adapter<CharacterAdapter.ListViewHolder>() 
         override fun areContentsTheSame(oldItem: Character, newItem: Character): Boolean {
             return oldItem == newItem
         }
-
     }
     private val recyclerListDiffer = AsyncListDiffer(this, differCallback)
 }
