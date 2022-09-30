@@ -23,6 +23,5 @@ class DetailCharacterViewModel @Inject constructor(private val characterUseCase:
         }
     }
 
-    fun setFavoriteCharacter(character: Character, newStatus:Boolean) = characterUseCase.setFavoriteCharacter(character, newStatus)
-
+    fun setFavoriteCharacter(character: Character, newStatus: Boolean) = characterUseCase.setFavoriteCharacter(character, newStatus)
 }

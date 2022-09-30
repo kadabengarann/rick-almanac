@@ -51,7 +51,7 @@ object DataMapper {
         isFavorite = input.isFavorite
     )
 
-    fun mapResponseToEntity(input: CharacterResponse)=  CharacterEntity(
+    fun mapResponseToEntity(input: CharacterResponse) = CharacterEntity(
         characterId = input.id,
         name = input.name,
         status = input.status,
@@ -74,6 +74,4 @@ object DataMapper {
         origin = input.origin,
         isFavorite = input.isFavorite
     )
-
-
 }

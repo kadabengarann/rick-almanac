@@ -25,7 +25,8 @@ class SearchFragment : Fragment() {
 
     private val characterAdapter = CharacterAdapter()
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
@@ -125,7 +126,6 @@ class SearchFragment : Fragment() {
                                 tvError.text = character.message ?: getString(R.string.something_wrong)
                             }
                         }
-
                     }
                 }
             }

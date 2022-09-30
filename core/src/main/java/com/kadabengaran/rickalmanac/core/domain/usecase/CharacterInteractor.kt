@@ -4,7 +4,7 @@ import com.kadabengaran.rickalmanac.core.domain.model.Character
 import com.kadabengaran.rickalmanac.core.domain.repository.ICharacterRepository
 import javax.inject.Inject
 
-class CharacterInteractor @Inject constructor(private val characterRepository: ICharacterRepository): CharacterUseCase {
+class CharacterInteractor @Inject constructor(private val characterRepository: ICharacterRepository) : CharacterUseCase {
 
     override fun getAllCharacter() = characterRepository.getAllCharacter()
 

@@ -67,27 +67,28 @@ class DetailCharacterActivity : AppCompatActivity() {
                     }
                     is Resource.Error -> {
                         binding.progressBar.visibility = View.GONE
-                        Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()                    }
+                        Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }
     }
 
     private fun showDetailCharacter(detailCharacter: Character) {
-            character = detailCharacter
-            Glide.with(this)
-                .load(detailCharacter.image)
-                .into(binding.ivCharacterImage)
+        character = detailCharacter
+        Glide.with(this)
+            .load(detailCharacter.image)
+            .into(binding.ivCharacterImage)
 
-            binding.apply {
-                content.tvDetailStatusValue.text = detailCharacter.status
-                content.tvDetailSpeciesValue.text = detailCharacter.species
-                content.tvDetailGenderValue.text = detailCharacter.gender
-                content.tvDetailOriginValue.text = detailCharacter.origin
-                content.tvDetailLocationValue.text = detailCharacter.location
-                toolbarLayout.title = detailCharacter.name
-            }
-            setFavoriteState(detailCharacter.isFavorite)
+        binding.apply {
+            content.tvDetailStatusValue.text = detailCharacter.status
+            content.tvDetailSpeciesValue.text = detailCharacter.species
+            content.tvDetailGenderValue.text = detailCharacter.gender
+            content.tvDetailOriginValue.text = detailCharacter.origin
+            content.tvDetailLocationValue.text = detailCharacter.location
+            toolbarLayout.title = detailCharacter.name
+        }
+        setFavoriteState(detailCharacter.isFavorite)
     }
 
     private fun setFavoriteState(favorite: Boolean) =

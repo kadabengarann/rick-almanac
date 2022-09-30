@@ -41,7 +41,7 @@ class CharacterRepository @Inject constructor(
     override fun getDetailCharacter(id: Int): Flow<Resource<Character>> =
         object : NetworkBoundResource<Character, CharacterResponse>() {
             override fun loadFromDB(): Flow<Character?> {
-                return localDataSource.getDetailCharacter(id).map  { characterEntity: CharacterEntity? ->
+                return localDataSource.getDetailCharacter(id).map { characterEntity: CharacterEntity? ->
                     if (characterEntity == null) return@map null else return@map DataMapper.mapEntityToDomain(characterEntity)
                 }
             }

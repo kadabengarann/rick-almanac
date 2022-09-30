@@ -4,7 +4,7 @@ import com.kadabengaran.rickalmanac.core.data.Resource
 import com.kadabengaran.rickalmanac.core.domain.model.Character
 import kotlinx.coroutines.flow.Flow
 
-interface ICharacterRepository  {
+interface ICharacterRepository {
 
     fun getAllCharacter(): Flow<Resource<List<Character>>>
 
@@ -15,5 +15,4 @@ interface ICharacterRepository  {
     fun getDetailCharacter(id: Int): Flow<Resource<Character>>
 
     suspend fun searchCharacter(query: String): Flow<Resource<List<Character>>>
-
 }

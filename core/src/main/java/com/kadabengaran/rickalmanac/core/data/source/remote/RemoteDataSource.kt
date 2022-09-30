@@ -22,7 +22,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
                 val response = apiService.getList()
                 val dataArray = response.results
                 if (dataArray.isNotEmpty()) emit(ApiResponse.Success(response.results)) else emit(ApiResponse.Empty)
-            } catch (e : Exception){
+            } catch (e: Exception) {
                 emit(ApiResponse.Error(e.toString()))
                 Log.e("RemoteDataSource", e.toString())
             }
@@ -34,7 +34,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
             try {
                 val response = apiService.getCharacterDetail(id)
                 if (response != null) emit(ApiResponse.Success(response)) else emit(ApiResponse.Empty)
-            } catch (e : Exception){
+            } catch (e: Exception) {
                 emit(ApiResponse.Error(e.toString()))
                 Log.e("RemoteDataSource", e.toString())
             }
@@ -46,7 +46,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
             try {
                 val response = apiService.getSearchList(query)
                 if (response.results.isNotEmpty()) emit(ApiResponse.Success(response.results)) else emit(ApiResponse.Empty)
-            } catch (e : Exception){
+            } catch (e: Exception) {
                 when (e) {
                     is IOException -> emit(ApiResponse.Error("No internet connection"))
                     is HttpException -> {

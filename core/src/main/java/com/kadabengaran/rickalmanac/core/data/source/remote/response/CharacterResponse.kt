@@ -12,7 +12,6 @@ class CharacterResponse(
     @field:SerializedName("status")
     val status: String,
 
-
     @field:SerializedName("gender")
     val gender: String,
 
